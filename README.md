@@ -8,7 +8,7 @@ mkdir /mnt/data
 wget -P /mnt/data https://gist.github.com/jdstaerk/7a4c43ea94cefd682c12f20d95e9b0a8/raw/dd44b4f8f32ddf6c6959f5926009dceacc37b01d/index.js
 ```
 
-cat index.js
+cat /mnt/data/index.js
 ```shell
 const os = require('os');
 const http = require('http');
@@ -34,11 +34,19 @@ kubectl describe service/simple-http
 ```
 
 
-## test exposed port
+## test exposed ports
 ```shell
 export CLUSTER_IP=$(kubectl describe service/simple-http | grep "IP:" | awk '{print $2}')
 curl $CLUSTER_IP:3000
 ```
+
+curl Endpoint IPs
+```shell
+kubectl describe service/simple-http
+curl 172.17.0.5:3000
+...
+```
+
 
 ## check volume storage inside pod
 ```shell

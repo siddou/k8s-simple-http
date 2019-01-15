@@ -9,6 +9,6 @@ spec:
     targetPort: 3000
   selector:
     io.kompose.service: simple-http
-#  type: LoadBalancer
+  type: LoadBalancer
 status:
   loadBalancer: {}
