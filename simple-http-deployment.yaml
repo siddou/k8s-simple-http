@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple-http
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: simple-http
+    spec:
+      containers:
+      - name: simple-http-container
+        image: node:lts
+        command: ["node"]
+        args: ["/js/node.js"]
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+          - mountPath: "/js"
+            name: simple-http-pv-storage
+      restartPolicy: Always
+      volumes:
+        - name: simple-http-pv-storage
+          persistentVolumeClaim:
+           claimName: simple-http-claim
