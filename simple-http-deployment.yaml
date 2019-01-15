@@ -4,6 +4,7 @@ metadata:
   name: simple-http
 spec:
   replicas: 1
+#  replicas: 10
   strategy:
     type: Recreate
   template:
@@ -15,7 +16,7 @@ spec:
       - name: simple-http-container
         image: node:lts
         command: ["node"]
-        args: ["/js/node.js"]
+        args: ["/js/index.js"]
         ports:
         - containerPort: 3000
         volumeMounts:
