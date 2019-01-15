@@ -9,10 +9,10 @@ wget -P mnt/data https://gist.github.com/jdstaerk/7a4c43ea94cefd682c12f20d95e9b0
 ```
 
 ```shell
-kubectl create -f pv-volume.yaml
-kubectl create -f pv-claim.yaml
-kubectl create -f pv-pod.yaml
-kubectl create -f pv-service.yaml
+kubectl create -f simple-http-volume.yaml
+kubectl create -f simple-http-claim.yaml
+kubectl create -f simple-http-deployment.yaml
+kubectl create -f simple-http-service.yaml
 kubectl get pod,services
 kubectl describe service/task-pv-service
 ```
